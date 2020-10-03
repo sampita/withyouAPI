@@ -22,7 +22,7 @@ class EthnicitySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'url', 'name')
 
 
-class ParkAreas(ViewSet):
+class Ethnicities(ViewSet):
     """Ethnicities"""
             
     def list(self, request):
