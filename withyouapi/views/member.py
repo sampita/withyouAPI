@@ -14,7 +14,7 @@ class MemberSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Member
         url = serializers.HyperlinkedIdentityField(
-            view_name='user',
+            view_name='member',
             lookup_field='id'
         )
         fields = ('id', 'brith_date', 'last_screening', 'diagnosis_date', 'city_id', 'country_id', 'ethnicity_id', 'member_type_id', 'user_id')
