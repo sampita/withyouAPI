@@ -10,7 +10,7 @@ class Member(models.Model):
     birth_date = models.DateField()
     last_screening = models.DateField(null=True)
     diagnosis_date = models.DateField(null=True)
-    ethnicity = models.ForeignKey('Ethnicity', on_delete=models.DO_NOTHING)
+    ethnicity_id = models.ForeignKey('Ethnicity', on_delete=models.DO_NOTHING)
     country_id = models.ForeignKey('Country', on_delete=models.DO_NOTHING)
     city_id = models.ForeignKey('City', on_delete=models.DO_NOTHING)
     member_type = models.ForeignKey('MemberType', on_delete=models.DO_NOTHING)
