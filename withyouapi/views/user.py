@@ -46,6 +46,9 @@ class Users(ViewSet):
         user = User.objects.all()
 
         serializer = UserSerializer(
-            user, many = True, context={'request':request})
+            user,
+            many = True,
+            context={'request':request}
+        )
 
         return Response(serializer.data)

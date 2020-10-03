@@ -20,32 +20,35 @@ class MemberSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'brith_date', 'last_screening', 'diagnosis_date', 'city_id', 'country_id', 'ethnicity_id', 'member_type_id', 'user_id')
 
 
-class Users(ViewSet):
-    """Users"""
+class Members(ViewSet):
+    """Members"""
 
     def retrieve(self, request, pk=None):
-        """Handle GET requests for single user
+        """Handle GET requests for single member
 
         Returns:
-             Response -- JSON serialized user instance
+             Response -- JSON serialized member instance
         """ 
         try:
-            user = User.objects.get(pk=pk)
-            serializer = UserSerializer(user,
+            member = Member.objects.get(pk=pk)
+            serializer = MemberSerializer(member,
             context = {'request': request})
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
     def list(self, request):
-        """Handle GET requests to users resource
+        """Handle GET requests to members resource
 
         Returns:
-             Response -- JSON serialized list of users
+             Response -- JSON serialized list of members
         """      
-        user = User.objects.all()
+        member = Members.objects.all()
 
-        serializer = UserSerializer(
-            user, many = True, context={'request':request})
+        serializer = MemberSerializer(
+            member,
+            many = True,
+            context={'request':request}
+        )
 
         return Response(serializer.data)
