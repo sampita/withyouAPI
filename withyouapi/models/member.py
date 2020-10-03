@@ -10,9 +10,9 @@ class Member(models.Model):
     birth_date = models.DateField()
     last_screening = models.DateField(null=True)
     diagnosis_date = models.DateField(null=True)
-    ethnicity_id = models.ForeignKey('Ethnicity', on_delete=models.DO_NOTHING)
-    country_id = models.ForeignKey('Country', on_delete=models.DO_NOTHING)
-    city_id = models.ForeignKey('City', on_delete=models.DO_NOTHING)
+    ethnicity = models.ForeignKey('Ethnicity', on_delete=models.DO_NOTHING)
+    country = models.ForeignKey('Country', on_delete=models.DO_NOTHING)
+    city = models.ForeignKey('City', on_delete=models.DO_NOTHING)
     member_type = models.ForeignKey('MemberType', on_delete=models.DO_NOTHING)
     # first_name, last_name, email, created_at, and is_active are all inherited from Django REST's built-in User
 
