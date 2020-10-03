@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
 from withyouapi.models import Member
+from rest_framework.decorators import action
 
 
 class MemberSerializer(serializers.HyperlinkedModelSerializer):
@@ -17,7 +18,7 @@ class MemberSerializer(serializers.HyperlinkedModelSerializer):
             view_name='member',
             lookup_field='id'
         )
-        fields = ('id', 'brith_date', 'last_screening', 'diagnosis_date', 'city_id', 'country_id', 'ethnicity_id', 'member_type_id', 'user_id')
+        fields = ('id', 'birth_date', 'last_screening', 'diagnosis_date', 'street_address', 'street_address_2', 'postal_code', 'city_id', 'country_id', 'ethnicity_id', 'member_type_id', 'user_id')
 
 
 class Members(ViewSet):
@@ -52,3 +53,23 @@ class Members(ViewSet):
         )
 
         return Response(serializer.data)
+    
+    #Custom action to update user profile
+    # @action(methods=['put'], detail=False)
+    # def profile_update(self, request):
+    #     """
+    #     Handle PUT requests for a member
+    #     Returns:
+    #         Response -- Empty body with 204 status code
+    #     """
+    #     member = Member.objects.get(pk=request.auth.user.member.id)
+    #     member.street_address = request.data["street_address"]
+    #     member.street_address_2 = request.data["street_address_2"]
+    #     member.postal_code = request.data["postal_code"]
+    #     member.city_id = request.data["city_id"]
+    #     member.country_id = request.data["country_id"]
+    #     member.user.first_name = request.data["first_name"]
+    #     member.user.last_name = request.data["last_name"]
+    #     member.save()
+    #     member.user.save()
+    #     return Response({}, status=status.HTTP_204_NO_CONTENT)
