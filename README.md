@@ -35,3 +35,15 @@ Our purpose is to make you feel secure, visible and respected."
    
    {}
    ```
+
+### Database Management
+
+You can use whichever tool you prefer, but to test the database while in development I used the free cross-platform tool [TablePlus](https://tableplus.com/).
+
+To get setup with TablePlus:
+- Open TablePlus
+- Click 'Create New Connection'
+- Select SQLite
+- Give a name to your connection (It can be anything-- I just used "withyou")
+- Select the database file you want to connect to (Project Folder > db.sqlite3)
+- Click "Connect" and you should see all the tables, including the built-in Django REST tables (beginning with "django_") and the WithYou tables (beginning with "withyouapi_")
