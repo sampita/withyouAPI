@@ -17,7 +17,7 @@ class EthnicitySerializer(serializers.HyperlinkedModelSerializer):
         model = Ethnicity
         url = serializers.HyperlinkedIdentityField(
             view_name='ethnicity',
-            lookup_field='name'
+            lookup_field='id'
         )
         fields = ('id', 'url', 'name')
 
