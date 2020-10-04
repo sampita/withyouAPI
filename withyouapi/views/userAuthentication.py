@@ -58,7 +58,16 @@ def register_user(request):
 
     member = Member.objects.create(
         user=new_user,
-        address=req_body["address"]
+        birth_date=req_body['birth_date'],
+        last_screening=req_body['last_screening'],
+        diagnosis_date=req_body['diagnosis_date'],
+        member_type_id=req_body['member_type_id'],
+        street_address=req_body['street_address'],
+        street_address_2=req_body['street_address_2'],
+        city_id=req_body['city_id'],
+        country_id=req_body['country_id'],
+        postal_code=req_body['postal_code'],
+        ethnicity_id=req_body['ethnicity_id'],
     )
 
     # Commit user to the database
