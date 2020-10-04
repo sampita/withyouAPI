@@ -46,7 +46,7 @@ class Members(ViewSet):
         Returns:
              Response -- JSON serialized list of members
         """      
-        member = Members.objects.all()
+        member = Member.objects.all()
 
         serializer = MemberSerializer(
             member,
