@@ -18,7 +18,8 @@ class MemberSerializer(serializers.HyperlinkedModelSerializer):
             view_name='member',
             lookup_field='id'
         )
-        fields = ('id', 'birth_date', 'last_screening', 'diagnosis_date', 'street_address', 'street_address_2', 'postal_code', 'city_id', 'country_id', 'ethnicity_id', 'member_type_id', 'user_id')
+        fields = ('id', 'birth_date', 'last_screening', 'diagnosis_date', 'street_address', 'street_address_2', 'postal_code', 'city_id', 'country_id', 'ethnicity_id', 'member_type_id', 'user')
+        depth = 2
 
 
 class Members(ViewSet):
