@@ -9,8 +9,8 @@ from rest_framework.authtoken.views import obtain_auth_token
 from withyouapi.views import register_user, login_user, Ethnicities, Forms, Members, MemberTypes
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'ethnicities', Ethnicities, 'ethnicity')
 router.register(r'forms', Forms, 'form')
+router.register(r'ethnicities', Ethnicities, 'ethnicity')
 router.register(r'members', Members, 'member')
 router.register(r'membertypes', MemberTypes, 'member_type')
 
