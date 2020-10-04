@@ -5,8 +5,8 @@ class Clinic(models.Model):
     
     name = models.CharField(max_length=50)
     street_address = models.CharField(max_length=80)
-    city_id = models.ForeignKey('City', on_delete=models.DO_NOTHING)
-    country_id = models.ForeignKey('Country', on_delete=models.DO_NOTHING)
+    city = models.ForeignKey('City', on_delete=models.DO_NOTHING)
+    country = models.ForeignKey('Country', on_delete=models.DO_NOTHING)
     postal_code = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)

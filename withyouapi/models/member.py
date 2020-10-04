@@ -10,13 +10,16 @@ class Member(models.Model):
     birth_date = models.DateField()
     last_screening = models.DateField(null=True)
     diagnosis_date = models.DateField(null=True)
-    ethnicity_id = models.ForeignKey('Ethnicity', on_delete=models.DO_NOTHING)
-    country_id = models.ForeignKey('Country', on_delete=models.DO_NOTHING)
-    city_id = models.ForeignKey('City', on_delete=models.DO_NOTHING)
+    ethnicity = models.ForeignKey('Ethnicity', on_delete=models.DO_NOTHING)
+    street_address = models.CharField(max_length=50, null=True)
+    street_address_2 = models.CharField(max_length=50, null=True)
+    postal_code = models.CharField(max_length=25, null=True)
+    country = models.ForeignKey('Country', on_delete=models.DO_NOTHING)
+    city = models.ForeignKey('City', on_delete=models.DO_NOTHING)
     member_type = models.ForeignKey('MemberType', on_delete=models.DO_NOTHING)
     # first_name, last_name, email, created_at, and is_active are all inherited from Django REST's built-in User
 
     class Meta:
-        ordering = (F('user.date_joined').asc(nulls_last=True),)
+        ordering = ('user',)
         verbose_name = ("member")
         verbose_name_plural = ("members")
