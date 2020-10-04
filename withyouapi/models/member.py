@@ -20,6 +20,6 @@ class Member(models.Model):
     # first_name, last_name, email, created_at, and is_active are all inherited from Django REST's built-in User
 
     class Meta:
-        ordering = (F('user.date_joined').asc(nulls_last=True),)
+        ordering = ('user',)
         verbose_name = ("member")
         verbose_name_plural = ("members")
