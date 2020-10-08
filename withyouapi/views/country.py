@@ -19,7 +19,7 @@ class CountrySerializer(serializers.HyperlinkedModelSerializer):
             view_name='country',
             lookup_field='id'
         )
-        fields = ('name')
+        fields = ('name','region','created_at')
 
 
 class Countries(ViewSet):

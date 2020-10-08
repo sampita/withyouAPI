@@ -19,7 +19,7 @@ class ClinicReviewSerializer(serializers.HyperlinkedModelSerializer):
             view_name='clinic_review',
             lookup_field='id'
         )
-        fields = ('clinic','rating','review')
+        fields = ('clinic','rating','review','created_by','created_at','updated_at')
 
 
 class ClinicReviews(ViewSet):

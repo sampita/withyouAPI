@@ -19,7 +19,7 @@ class ClinicSerializer(serializers.HyperlinkedModelSerializer):
             view_name='clinic',
             lookup_field='id'
         )
-        fields = ('name','street_address','city','country','postal_code','created_at','updated_at','created_by','updated_by')
+        fields = ('name','street_address','city_id','country_id','postal_code','created_at','updated_at','created_by','updated_by')
 
 
 class Clinics(ViewSet):
