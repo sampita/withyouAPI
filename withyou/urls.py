@@ -6,13 +6,17 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
-from withyouapi.views import register_user, login_user, Ethnicities, Forms, Members, MemberTypes
+from withyouapi.views import register_user, login_user, Ethnicities, Forms, Members, MemberTypes, Cities, Countries, Clinics, ClinicReviews
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'forms', Forms, 'form')
 router.register(r'ethnicities', Ethnicities, 'ethnicity')
 router.register(r'members', Members, 'member')
 router.register(r'membertypes', MemberTypes, 'member_type')
+router.register(r'cities', Cities, 'city')
+router.register(r'countries', Countries,'country')
+router.register(r'clinics', Clinics,'clinic')
+router.register(r'clinic_reviews', ClinicReviews,'clinic_reviews')
 
 urlpatterns = [
     path('', include(router.urls)),
