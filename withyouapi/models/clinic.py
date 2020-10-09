@@ -13,6 +13,7 @@ class Clinic(models.Model):
     updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     created_by = models.ForeignKey(User, related_name="created_by", on_delete=models.DO_NOTHING)
     updated_by = models.ForeignKey(User, related_name="updated_by", on_delete=models.DO_NOTHING)
+    is_validated = models.BooleanField(default=False)
     
     class Meta:
         ordering = ("name", )

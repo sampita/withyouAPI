@@ -19,7 +19,7 @@ class ClinicSerializer(serializers.HyperlinkedModelSerializer):
             view_name='clinic',
             lookup_field='id'
         )
-        fields = ('name','street_address', 'street_address_2', 'city_id','country_id','postal_code','created_at','updated_at','created_by','updated_by')
+        fields = ('name','street_address', 'street_address_2', 'city_id','country_id','postal_code','created_at','updated_at','created_by','updated_by', 'is_validated')
 
 
 class Clinics(ViewSet):
@@ -46,8 +46,6 @@ class Clinics(ViewSet):
             Response -- JSON serialized Clinic instance
         """
 
-        current_user = Customer.objects.get(user=request.auth.user)
-
         newclinic = Clinic()
         newclinic.name = request.data["name"]
         newclinic.street_address = request.data["street_address"]
@@ -59,6 +57,7 @@ class Clinics(ViewSet):
         newclinic.updated_at = request.data["updated_at"]
         newclinic.created_by = request.data["created_by"]
         newclinic.updated_by = request.data["updated_by"]
+        newclinic.is_validated = request.data["is_validated"]
         newclinic.save()
 
         serializer = ClinicSerializer(newclinic, context={'request': request})
@@ -82,6 +81,7 @@ class Clinics(ViewSet):
         clinic.updated_at = request.data["updated_at"]
         clinic.created_by = request.data["created_by"]
         clinic.updated_by = request.data["updated_by"]
+        clinic.is_validated = request.data["is_validated"]
         clinic.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
