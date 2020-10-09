@@ -47,7 +47,7 @@ class Clinics(ViewSet):
         """
 
         current_user = Customer.objects.get(user=request.auth.user)
-        
+
         newclinic = Clinic()
         newclinic.name = request.data["name"]
         newclinic.street_address = request.data["street_address"]
@@ -64,3 +64,24 @@ class Clinics(ViewSet):
         serializer = ClinicSerializer(newclinic, context={'request': request})
 
         return Response(serializer.data)
+    
+    def update(self, request, pk=None):
+        """Handle PUT requests for a Clinic
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        clinic = Clinic.objects.get(pk=pk)
+        clinic.name = request.data["name"]
+        clinic.street_address = request.data["street_address"]
+        clinic.street_address_2 = request.data["street_address_2"]
+        clinic.city_id = request.data["city_id"]
+        clinic.country_id = request.data["country_id"]
+        clinic.postal_code = request.data["postal_code"]
+        clinic.created_at = request.data["created_at"]
+        clinic.updated_at = request.data["updated_at"]
+        clinic.created_by = request.data["created_by"]
+        clinic.updated_by = request.data["updated_by"]
+        clinic.save()
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
