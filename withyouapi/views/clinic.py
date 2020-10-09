@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from withyouapi.models import Clinic
+from withyouapi.models import Clinic, Member
 
 
 class ClinicSerializer(serializers.HyperlinkedModelSerializer):
@@ -59,6 +59,8 @@ class Clinics(ViewSet):
             Response -- JSON serialized clinic instance
         """
 
+        current_user = Member.objects.get(user=request.auth.user)
+
         newclinic = Clinic()
         newclinic.name = request.data["name"]
         newclinic.street_address = request.data["street_address"]
@@ -68,7 +70,7 @@ class Clinics(ViewSet):
         newclinic.postal_code = request.data["postal_code"]
         newclinic.created_at = request.data["created_at"]
         newclinic.updated_at = request.data["updated_at"]
-        newclinic.created_by = request.data["created_by"]
+        newclinic.created_by = current_user
         newclinic.updated_by = request.data["updated_by"]
         newclinic.is_validated = request.data["is_validated"]
         newclinic.save()

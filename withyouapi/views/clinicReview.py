@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from withyouapi.models import ClinicReview
+from withyouapi.models import ClinicReview, Member
 
 
 class ClinicReviewSerializer(serializers.HyperlinkedModelSerializer):
@@ -58,13 +58,16 @@ class ClinicReviews(ViewSet):
         Returns:
             Response -- JSON serialized clinic review instance
         """
+
+        current_user = Member.objects.get(user=request.auth.user)
+
         newreview = ClinicReview()
         newreview.clinic_id = request.data["clinic_id"]
         newreview.rating = request.data["rating"]
         newreview.review = request.data["review"]
         newreview.created_at = request.data["created_at"]
         newreview.updated_at = request.data["updated_at"]
-        newreview.created_by = request.data["created_by"]
+        newreview.created_by = current_user
         newreview.save()
 
         serializer = ClinicReviewSerializer(newreview, context={'request': request})
