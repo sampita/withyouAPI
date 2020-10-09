@@ -20,7 +20,7 @@ class FormSerializer(serializers.HyperlinkedModelSerializer):
             view_name='form',
             lookup_field='id'
         )
-        fields = ('id', 'member_id', 'form_data', 'form_type', 'inserted_at', 'updated_at')
+        fields = ('id', 'member_id', 'form_data', 'form_type', 'created_at', 'updated_at')
         depth = 2
 
 
@@ -39,26 +39,24 @@ class Forms(ViewSet):
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
-
     
-    # ********* WORKING ********
-    
-    # def create(self, request, pk, form_type):
-    #     """Handle POST operations for forms
-    #     Returns:
-    #     Response -- JSON serialized form instance
-    #     """
-    #     current_user = Member.objects.get(user=request.auth.user)
-    #     formType = get_object_or_404(Form, form_type=form_type)
+    def create(self, request):
+        """Handle POST operations
 
-    #     try:
-    #         open_form = Form.objects.get(member=current_user, form_type=form_type)
+        Returns:
+            Response -- JSON serialized form instance
+        """
 
-    #     except Form.DoesNotExist:
-    #         open_form = Form()
-    #         open_form.member_id = request.auth.user.member.id
-    #         open_form.save()
+        current_user = Member.objects.get(user=request.auth.user)
 
-    #     serializer = FormSerializer(open_form, context={'request': request})
+        newform = Form()
+        newform.member_id = current_user
+        newform.form_data = request.data["form_data"]
+        newform.form_type = request.data["form_type"]
+        newform.created_at = request.data["created_at"]
+        newform.updated_at = request.data["updated_at"]
+        newform.save()
 
-    #     return Response(serializer.data)
+        serializer = FormSerializer(newform, context={'request': request})
+
+        return Response(serializer.data)
