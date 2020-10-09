@@ -74,3 +74,21 @@ class ClinicReviews(ViewSet):
         review.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
+    
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a Clinic Review
+
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            clinicreview = ClinicReview.objects.get(pk=pk)
+            clinicreview.delete()
+
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        except ClinicReview.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
