@@ -19,7 +19,7 @@ class EthnicitySerializer(serializers.HyperlinkedModelSerializer):
             view_name='ethnicity',
             lookup_field='id'
         )
-        fields = ('id', 'url', 'name')
+        fields = ('id', 'name')
 
 
 class Ethnicities(ViewSet):

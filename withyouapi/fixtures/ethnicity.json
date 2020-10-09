@@ -1,0 +1,93 @@
+[
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 1,
+        "fields": {
+            "name": "White"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 2,
+        "fields": {
+            "name": "Chinese"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 3,
+        "fields": {
+            "name": "South Asian (e.g. East Indian, Pakistani, Sri Lankan, etc.)"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 4,
+        "fields": {
+            "name": "Black"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 5,
+        "fields": {
+            "name": "Filipino"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 6,
+        "fields": {
+            "name": "Latin American"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 7,
+        "fields": {
+            "name": "SE Asian (e.g. Cambodian, Indonesian, Laotian, Vietnamese)"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 8,
+        "fields": {
+            "name": "Arab"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 9,
+        "fields": {
+            "name": "West Indian (e.g. Afghan, Iranian, etc)"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 10,
+        "fields": {
+            "name": "US Pacific Islander (e.g. Guam)"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 11,
+        "fields": {
+            "name": "Japanese"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 12,
+        "fields": {
+            "name": "Korean"
+            }
+    },
+    {
+        "model": "withyouapi.ethnicity",
+        "pk": 13,
+        "fields": {
+            "name": "Other"
+            }
+    }
+]
