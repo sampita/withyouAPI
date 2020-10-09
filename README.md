@@ -47,3 +47,7 @@ To get setup with TablePlus:
 - Give a name to your connection (It can be anything-- I just used "withyou")
 - Select the database file you want to connect to (Project Folder > db.sqlite3)
 - Click "Connect" and you should see all the tables, including the built-in Django REST tables (beginning with "django_") and the WithYou tables (beginning with "withyouapi_")
+
+____________
+
+### Link to the With You front-end repository: https://github.com/gabiguarini/withyouapp
