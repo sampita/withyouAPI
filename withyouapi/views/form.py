@@ -20,7 +20,7 @@ class FormSerializer(serializers.HyperlinkedModelSerializer):
             view_name='form',
             lookup_field='id'
         )
-        fields = ('id', 'url', 'member_id', 'form_data', 'form_type', 'inserted_at', 'updated_at')
+        fields = ('id', 'member_id', 'form_data', 'form_type', 'inserted_at', 'updated_at')
         depth = 2
 
 
