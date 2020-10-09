@@ -5,6 +5,7 @@ class Clinic(models.Model):
     
     name = models.CharField(max_length=50)
     street_address = models.CharField(max_length=80)
+    street_address_2 = models.CharField(max_length=80)
     city = models.ForeignKey('City', on_delete=models.DO_NOTHING)
     country = models.ForeignKey('Country', on_delete=models.DO_NOTHING)
     postal_code = models.CharField(max_length=30)
