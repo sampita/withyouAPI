@@ -45,6 +45,9 @@ class Clinics(ViewSet):
         Returns:
             Response -- JSON serialized Clinic instance
         """
+
+        current_user = Customer.objects.get(user=request.auth.user)
+        
         newclinic = Clinic()
         newclinic.name = request.data["name"]
         newclinic.street_address = request.data["street_address"]

@@ -38,3 +38,22 @@ class ClinicReviews(ViewSet):
             context={'request': request}
         )
         return Response(serializer.data)
+    
+    def create(self, request):
+        """Handle POST operations
+
+        Returns:
+            Response -- JSON serialized ClinicReview instance
+        """
+        newreview = ClinicReview()
+        newreview.clinic_id = request.data["clinic_id"]
+        newreview.rating = request.data["rating"]
+        newreview.review = request.data["review"]
+        newreview.created_at = request.data["created_at"]
+        newreview.updated_at = request.data["updated_at"]
+        newreview.created_by = request.data["created_by"]
+        newreview.save()
+
+        serializer = ClinicReviewSerializer(newreview, context={'request': request})
+
+        return Response(serializer.data)
