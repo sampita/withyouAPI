@@ -38,12 +38,25 @@ class Clinics(ViewSet):
             context={'request': request}
         )
         return Response(serializer.data)
+    
+    def retrieve(self, request, pk=None):
+        """Handle GET requests for a single clinic
+
+        Returns:
+            Response -- JSON serialized clinic instance
+        """
+        try:
+            clinic = Clinic.objects.get(pk=pk)
+            serializer = ClinicSerializer(clinic, context={'request': request})
+            return Response(serializer.data)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
     def create(self, request):
         """Handle POST operations
 
         Returns:
-            Response -- JSON serialized Clinic instance
+            Response -- JSON serialized clinic instance
         """
 
         newclinic = Clinic()
@@ -65,7 +78,7 @@ class Clinics(ViewSet):
         return Response(serializer.data)
     
     def update(self, request, pk=None):
-        """Handle PUT requests for a Clinic
+        """Handle PUT requests for a clinic
 
         Returns:
             Response -- Empty body with 204 status code
@@ -87,7 +100,7 @@ class Clinics(ViewSet):
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
     def destroy(self, request, pk=None):
-        """Handle DELETE requests for a Clinic
+        """Handle DELETE requests for a clinic
 
         Returns:
             Response -- 200, 404, or 500 status code

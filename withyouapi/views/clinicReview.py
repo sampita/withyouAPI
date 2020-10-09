@@ -39,11 +39,24 @@ class ClinicReviews(ViewSet):
         )
         return Response(serializer.data)
     
+    def retrieve(self, request, pk=None):
+        """Handle GET requests for a single clinic review
+
+        Returns:
+            Response -- JSON serialized clinic review instance
+        """
+        try:
+            clinicreview = ClinicReview.objects.get(pk=pk)
+            serializer = ClinicReviewSerializer(clinicreview, context={'request': request})
+            return Response(serializer.data)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+    
     def create(self, request):
         """Handle POST operations
 
         Returns:
-            Response -- JSON serialized ClinicReview instance
+            Response -- JSON serialized clinic review instance
         """
         newreview = ClinicReview()
         newreview.clinic_id = request.data["clinic_id"]
@@ -59,7 +72,7 @@ class ClinicReviews(ViewSet):
         return Response(serializer.data)
     
     def update(self, request, pk=None):
-        """Handle PUT requests for a Clinic Review
+        """Handle PUT requests for a clinic review
 
         Returns:
             Response -- Empty body with 204 status code
@@ -76,7 +89,7 @@ class ClinicReviews(ViewSet):
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
     def destroy(self, request, pk=None):
-        """Handle DELETE requests for a Clinic Review
+        """Handle DELETE requests for a clinic review
 
         Returns:
             Response -- 200, 404, or 500 status code
