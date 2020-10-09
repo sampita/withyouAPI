@@ -57,3 +57,20 @@ class ClinicReviews(ViewSet):
         serializer = ClinicReviewSerializer(newreview, context={'request': request})
 
         return Response(serializer.data)
+    
+    def update(self, request, pk=None):
+        """Handle PUT requests for a Clinic Review
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        review = ClinicReview.objects.get(pk=pk)
+        review.clinic_id = request.data["clinic_id"]
+        review.rating = request.data["rating"]
+        review.review = request.data["review"]
+        review.created_at = request.data["created_at"]
+        review.updated_at = request.data["updated_at"]
+        review.created_by = request.data["created_by"]
+        review.save()
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
